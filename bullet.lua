@@ -12,6 +12,13 @@ function Bullet:new(x,y)
     self.height = self.image:getHeight()
 end
 
+function Bullet:checkCollision(obj)
+    if self.x >= obj.x and self.x <= obj.x + obj.width and self.y >= obj.y and self.y <= obj.y + obj.height then
+        self.dead = true
+        obj.speed = obj.speed * 1.4
+    end
+end
+
 function Bullet:update(dt)
     self.y = self.y + (self.y * dt)
 end
